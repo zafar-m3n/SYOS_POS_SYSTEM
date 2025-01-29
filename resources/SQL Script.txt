@@ -1,0 +1,104 @@
+-- Create Database
+CREATE DATABASE SYOS_POS;
+USE SYOS_POS;
+
+-- Create Items Table
+CREATE TABLE items (
+    item_code VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    category VARCHAR(50) NOT NULL
+);
+
+-- Create Batches Table
+CREATE TABLE batches (
+    batch_id INT PRIMARY KEY AUTO_INCREMENT,
+    item_code VARCHAR(20) NOT NULL,
+    date_received DATE NOT NULL,
+    expiry_date DATE NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (item_code) REFERENCES items(item_code)
+);
+
+-- Create Store Inventory Table
+CREATE TABLE store_inventory (
+    inventory_id INT PRIMARY KEY AUTO_INCREMENT,
+    batch_id INT NOT NULL,
+    quantity_on_shelves INT NOT NULL,
+    FOREIGN KEY (batch_id) REFERENCES batches(batch_id)
+);
+
+-- Create Online Inventory Table
+CREATE TABLE online_inventory (
+    inventory_id INT PRIMARY KEY AUTO_INCREMENT,
+    batch_id INT NOT NULL,
+    quantity_online INT NOT NULL,
+    FOREIGN KEY (batch_id) REFERENCES batches(batch_id)
+);
+
+-- Create Transactions Table (Bills)
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    transaction_type ENUM('Online', 'In-Store') NOT NULL,
+    total_amount DECIMAL(10,2) NOT NULL,
+    transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Payment Table (Normalizing Payments from Transactions)
+CREATE TABLE payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    transaction_id INT NOT NULL,
+    payment_method ENUM('Cash', 'Card') NOT NULL,
+    FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id)
+);
+
+-- Create Cash Payments Table (Only for Cash Transactions)
+CREATE TABLE cash_payments (
+    payment_id INT PRIMARY KEY,
+    cash_tendered DECIMAL(10,2) NOT NULL,
+    change_amount DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (payment_id) REFERENCES payments(payment_id)
+);
+
+-- Create Card Payments Table (Only for Card Transactions)
+CREATE TABLE card_payments (
+    payment_id INT PRIMARY KEY,
+    card_number VARCHAR(20) NOT NULL,
+    card_holder_name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (payment_id) REFERENCES payments(payment_id)
+);
+
+-- Create Transaction Items Table (Bill Items)
+CREATE TABLE transaction_items (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    transaction_id INT NOT NULL,
+    item_code VARCHAR(20) NOT NULL,
+    quantity INT NOT NULL,
+    total_price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id),
+    FOREIGN KEY (item_code) REFERENCES items(item_code)
+);
+
+-- Insert Sample Items
+INSERT INTO items (item_code, name, price, category) VALUES
+('ITM001', 'Milk 1L', 3.50, 'Dairy'),
+('ITM002', 'Bread Loaf', 2.00, 'Bakery'),
+('ITM003', 'Eggs (12 Pack)', 4.00, 'Dairy'),
+('ITM004', 'Apple (1kg)', 3.00, 'Fruits'),
+('ITM005', 'Chicken Breast (500g)', 5.50, 'Meat');
+
+-- Insert Sample Batches
+INSERT INTO batches (item_code, date_received, expiry_date, quantity) VALUES
+('ITM001', '2025-01-01', '2025-02-01', 100),
+('ITM002', '2025-01-02', '2025-01-20', 50),
+('ITM003', '2025-01-03', '2025-02-15', 200),
+('ITM004', '2025-01-04', '2025-01-25', 150),
+('ITM005', '2025-01-05', '2025-02-10', 80);
+
+-- Insert Sample Store Inventory
+INSERT INTO store_inventory (batch_id, quantity_on_shelves) VALUES
+(1, 50), (2, 30), (3, 100), (4, 75), (5, 40);
+
+-- Insert Sample Online Inventory
+INSERT INTO online_inventory (batch_id, quantity_online) VALUES
+(1, 50), (2, 20), (3, 100), (4, 75), (5, 40);
