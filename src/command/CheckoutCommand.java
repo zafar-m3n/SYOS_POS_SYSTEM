@@ -21,16 +21,17 @@ public class CheckoutCommand implements Command, StockSubject {
 
     @Override
     public void execute() {
+        System.out.println("Finalizing Bill...");
         // Step 1: Build the Bill (Finalizes and stores it in the DB)
         Bill bill = billBuilder.build();
         System.out.println("Bill finalized with Serial Number: " + bill.getSerialNumber());
 
         // Step 2: Process Payment
         paymentStrategy.processPayment(bill.getSerialNumber(), bill.getTotalAmount(), bill.getCashTendered());
-        System.out.println("Payment processed for Bill ID: " + bill.getSerialNumber());
+        System.out.println("Thank you!");
 
         // Step 3: Notify Observers (Update Stock)
-        notifyObservers(bill.getItems(), bill.getTransactionType());
+        notifyObservers(bill.getItems());
     }
 
     // Implement StockSubject methods
@@ -45,9 +46,9 @@ public class CheckoutCommand implements Command, StockSubject {
     }
 
     @Override
-    public void notifyObservers(List<builder.BillItem> items, String transactionType) {
+    public void notifyObservers(List<builder.BillItem> items) {
         for (StockObserver observer : observers) {
-            observer.updateStock(items, transactionType);
+            observer.updateStock(items);
         }
     }
 }

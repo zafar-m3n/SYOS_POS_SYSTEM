@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35b75ada-ff2e-4951-a799-b86a11e1499d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/template/ReorderLevelReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/template/ReportTemplate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/template/ReshelvingReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/template/StockReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/template/TotalSalesReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/facade/POSFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adapter/StockManagementAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/StockManagementAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adapter/StockManagementSQLAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/StockManagementSQLAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/BillBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/BillBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/CheckoutCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/CheckoutCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observer/OnlineInventoryUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer/OnlineInventoryUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observer/StockObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer/StockObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observer/StockSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer/StockSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observer/StockUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer/StockUpdater.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,21 +41,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ZAFARULLAH/Documents/APIIT-SriLanka/Subjects/Year-3/Semester-1/CCCP-1/Assignment/CB011106_Assignment/SYOS_POS/lib/mysql-connector-j-9.2.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ZAFARULLAH/Documents/APIIT-SriLanka/Subjects/Year-3/Semester-1/CCCP-1/Assignment/CB011106_Assignment/SYOS_POS/lib/mysql-connector-j-9.2.0.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

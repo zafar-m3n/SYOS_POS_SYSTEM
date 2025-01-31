@@ -8,4 +8,5 @@ public interface StockManagementAdapter {
     void updateStock(String itemCode, int quantity);
     void reshelveItems();
     List<Map<String, Object>> checkReorderLevels();
+    public Map<String, Object> getItemByCode(String itemCode);
 }

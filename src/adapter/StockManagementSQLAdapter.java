@@ -28,6 +28,30 @@ public class StockManagementSQLAdapter implements StockManagementAdapter {
         return false;
     }
 
+    public Map<String, Object> getItemByCode(String itemCode) {
+        Map<String, Object> itemDetails = null;
+        String query = "SELECT item_code, name, price, category FROM items WHERE item_code = ?";
+
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, itemCode);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                itemDetails = new HashMap<>();
+                itemDetails.put("item_code", rs.getString("item_code"));
+                itemDetails.put("name", rs.getString("name"));
+                itemDetails.put("price", rs.getDouble("price"));
+                itemDetails.put("category", rs.getString("category"));
+            }
+        } catch (SQLException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return itemDetails;
+    }
+
     @Override
     public void updateStock(String itemCode, int quantity) {
         String selectQuery = "SELECT batch_id, quantity FROM batches WHERE item_code = ? ORDER BY expiry_date ASC, date_received ASC";

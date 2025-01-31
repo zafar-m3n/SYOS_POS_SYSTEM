@@ -12,9 +12,7 @@ public class StockUpdater implements StockObserver {
     }
 
     @Override
-    public void updateStock(List<BillItem> items, String transactionType) {
-        if (!transactionType.equals("In-Store")) return;
-
+    public void updateStock(List<BillItem> items) {
         for (BillItem item : items) {
             stockAdapter.updateStock(item.getItemCode(), item.getQuantity());
         }

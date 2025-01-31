@@ -1,5 +1,8 @@
+import facade.POSFacade;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        POSFacade posFacade = new POSFacade();
+        posFacade.startPOS();
     }
 }

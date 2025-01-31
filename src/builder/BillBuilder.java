@@ -44,7 +44,6 @@ public class BillBuilder {
     }
 
     public Bill build() {
-        // Insert into transactions table
         serialNumber = billAdapter.insertTransaction(transactionType, totalAmount);
         if (serialNumber == -1) {
             throw new RuntimeException("Failed to create transaction.");
