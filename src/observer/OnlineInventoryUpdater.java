@@ -13,10 +13,8 @@ public class OnlineInventoryUpdater implements StockObserver {
 
     @Override
     public void updateStock(List<BillItem> items) {
-
         for (BillItem item : items) {
             stockAdapter.updateStock(item.getItemCode(), item.getQuantity());
         }
-        System.out.println("Online inventory updated for online transaction.");
     }
 }

@@ -16,6 +16,5 @@ public class StockUpdater implements StockObserver {
         for (BillItem item : items) {
             stockAdapter.updateStock(item.getItemCode(), item.getQuantity());
         }
-        System.out.println("Stock updated for in-store transaction.");
     }
 }

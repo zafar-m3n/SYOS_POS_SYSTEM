@@ -20,10 +20,14 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 "JOIN transactions t ON ti.transaction_id = t.transaction_id " +
                 "WHERE DATE(t.transaction_date) = ? " +
                 "GROUP BY ti.item_code, i.name";
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+        Connection conn = null;
+        try {
+            conn = dbConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, date);
             ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 Map<String, Object> record = new HashMap<>();
                 record.put("item_code", rs.getString("item_code"));
@@ -32,9 +36,15 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 record.put("total_revenue", rs.getDouble("total_revenue"));
                 salesReport.add(record);
             }
+
+            rs.close();
+            stmt.close();
         } catch (SQLException | InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            if (conn != null) dbConnection.releaseConnection(conn);
         }
+
         return salesReport;
     }
 
@@ -46,9 +56,13 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 "JOIN batches b ON s.batch_id = b.batch_id " +
                 "JOIN items i ON b.item_code = i.item_code " +
                 "GROUP BY i.item_code, i.name";
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
+
+        Connection conn = null;
+        try {
+            conn = dbConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 Map<String, Object> record = new HashMap<>();
                 record.put("item_code", rs.getString("item_code"));
@@ -56,9 +70,15 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 record.put("total_shelved", rs.getInt("total_shelved"));
                 reshelvingReport.add(record);
             }
+
+            rs.close();
+            stmt.close();
         } catch (SQLException | InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            if (conn != null) dbConnection.releaseConnection(conn);
         }
+
         return reshelvingReport;
     }
 
@@ -70,9 +90,13 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 "JOIN batches b ON i.item_code = b.item_code " +
                 "GROUP BY i.item_code, i.name " +
                 "HAVING total_quantity < 50";
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
+
+        Connection conn = null;
+        try {
+            conn = dbConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 Map<String, Object> record = new HashMap<>();
                 record.put("item_code", rs.getString("item_code"));
@@ -80,9 +104,15 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 record.put("total_quantity", rs.getInt("total_quantity"));
                 reorderReport.add(record);
             }
+
+            rs.close();
+            stmt.close();
         } catch (SQLException | InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            if (conn != null) dbConnection.releaseConnection(conn);
         }
+
         return reorderReport;
     }
 
@@ -93,9 +123,13 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 "FROM batches b " +
                 "JOIN items i ON b.item_code = i.item_code " +
                 "ORDER BY i.name, b.expiry_date ASC";
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
+
+        Connection conn = null;
+        try {
+            conn = dbConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 Map<String, Object> record = new HashMap<>();
                 record.put("batch_id", rs.getInt("batch_id"));
@@ -106,25 +140,38 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 record.put("quantity", rs.getInt("quantity"));
                 stockReport.add(record);
             }
+
+            rs.close();
+            stmt.close();
         } catch (SQLException | InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            if (conn != null) dbConnection.releaseConnection(conn);
         }
+
         return stockReport;
     }
 
     @Override
     public List<Map<String, Object>> generateBillReport(int transactionId) {
         List<Map<String, Object>> billReport = new ArrayList<>();
-        String billQuery = "SELECT t.transaction_id, t.transaction_type, t.total_amount, t.transaction_date, " +
-                "p.payment_method, cp.cash_tendered, cp.change_amount " +
-                "FROM transactions t " +
-                "LEFT JOIN payments p ON t.transaction_id = p.transaction_id " +
-                "LEFT JOIN cash_payments cp ON p.payment_id = cp.payment_id " +
-                "WHERE t.transaction_id = ?";
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(billQuery)) {
+        Connection conn = null;
+
+        try {
+            conn = dbConnection.getConnection();
+
+            // Fetch main bill details
+            String billQuery = "SELECT t.transaction_id, t.transaction_type, t.total_amount, t.transaction_date, " +
+                    "p.payment_method, cp.cash_tendered, cp.change_amount " +
+                    "FROM transactions t " +
+                    "LEFT JOIN payments p ON t.transaction_id = p.transaction_id " +
+                    "LEFT JOIN cash_payments cp ON p.payment_id = cp.payment_id " +
+                    "WHERE t.transaction_id = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(billQuery);
             stmt.setInt(1, transactionId);
             ResultSet rs = stmt.executeQuery();
+
             if (rs.next()) {
                 Map<String, Object> billDetails = new HashMap<>();
                 billDetails.put("transaction_id", rs.getInt("transaction_id"));
@@ -136,18 +183,20 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 billDetails.put("change_amount", rs.getDouble("change_amount"));
                 billReport.add(billDetails);
             }
-        } catch (SQLException | InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        String itemsQuery = "SELECT ti.item_code, i.name, ti.quantity, ti.total_price " +
-                "FROM transaction_items ti " +
-                "JOIN items i ON ti.item_code = i.item_code " +
-                "WHERE ti.transaction_id = ?";
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(itemsQuery)) {
+            rs.close();
+            stmt.close();
+
+            // Fetch bill items
+            String itemsQuery = "SELECT ti.item_code, i.name, ti.quantity, ti.total_price " +
+                    "FROM transaction_items ti " +
+                    "JOIN items i ON ti.item_code = i.item_code " +
+                    "WHERE ti.transaction_id = ?";
+
+            stmt = conn.prepareStatement(itemsQuery);
             stmt.setInt(1, transactionId);
-            ResultSet rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
+
             while (rs.next()) {
                 Map<String, Object> itemDetails = new HashMap<>();
                 itemDetails.put("item_code", rs.getString("item_code"));
@@ -156,9 +205,15 @@ public class ReportManagementSQLAdapter implements ReportManagementAdapter {
                 itemDetails.put("total_price", rs.getDouble("total_price"));
                 billReport.add(itemDetails);
             }
+
+            rs.close();
+            stmt.close();
         } catch (SQLException | InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            if (conn != null) dbConnection.releaseConnection(conn);
         }
+
         return billReport;
     }
 }
