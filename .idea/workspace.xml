@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35b75ada-ff2e-4951-a799-b86a11e1499d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/adapter/BillManagementAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adapter/BillManagementSQLAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adapter/PaymentManagementAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adapter/PaymentManagementSQLAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adapter/ReportManagementAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adapter/ReportManagmentSQLAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adapter/StockManagementAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adapter/StockManagementSQLAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/strategy/CashPaymentStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/strategy/PaymentStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/DatabaseAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/ReportAdapter.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
