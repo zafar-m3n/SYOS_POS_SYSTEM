@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35b75ada-ff2e-4951-a799-b86a11e1499d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/command/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/template/ReorderLevelReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/template/ReportTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/template/ReshelvingReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/template/StockReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/template/TotalSalesReport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
