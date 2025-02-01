@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35b75ada-ff2e-4951-a799-b86a11e1499d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/BillManagementSQLAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/BillManagementSQLAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/PaymentManagementSQLAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/PaymentManagementSQLAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/ReportManagementSQLAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/ReportManagementSQLAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/StockManagementSQLAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/StockManagementSQLAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/observer/OnlineInventoryUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer/OnlineInventoryUpdater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/observer/StockUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer/StockUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/facade/POSFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/POSFacade.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

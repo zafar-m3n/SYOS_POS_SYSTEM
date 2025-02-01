@@ -4,7 +4,7 @@ import adapter.BillManagementSQLAdapter;
 import adapter.PaymentManagementSQLAdapter;
 import adapter.ReportManagementSQLAdapter;
 import adapter.StockManagementSQLAdapter;
-import builder.BillBuilder;
+import builder.*;
 import command.CheckoutCommand;
 import observer.StockObserver;
 import observer.StockUpdater;
@@ -136,6 +136,7 @@ public class POSFacade {
         checkoutCommand = new CheckoutCommand(billBuilder, paymentStrategy);
         registerObservers();
         checkoutCommand.execute();
+        printBill(billBuilder.build());
     }
 
     private void registerObservers() {
@@ -182,4 +183,31 @@ public class POSFacade {
 
         report.generateReport();
     }
+
+    private void printBill(Bill bill) {
+        System.out.println("\n=================================");
+        System.out.println("         SYOS POS SYSTEM         ");
+        System.out.println("=================================");
+        System.out.printf("Bill Serial Number: %d%n", bill.getSerialNumber());
+        System.out.printf("Date: %s%n", bill.getBillDate());
+        System.out.printf("Transaction Type: %s%n", bill.getTransactionType());
+        System.out.println("---------------------------------");
+        System.out.printf("%-20s %-10s %-10s%n", "Item Name", "Quantity", "Price");
+        System.out.println("---------------------------------");
+
+        for (BillItem item : bill.getItems()) {
+            Map<String, Object> itemData = stockAdapter.getItemByCode(item.getItemCode());
+            String itemName = (String) itemData.get("name"); // Get the item name
+            System.out.printf("%-20s %-10d $%-10.2f%n", itemName, item.getQuantity(), item.getTotalPrice());
+        }
+
+        System.out.println("---------------------------------");
+        System.out.printf("Total Amount: $%.2f%n", bill.getTotalAmount());
+        System.out.printf("Cash Tendered: $%.2f%n", bill.getCashTendered());
+        System.out.printf("Change: $%.2f%n", bill.getChangeAmount());
+        System.out.println("=================================");
+        System.out.println("  Thank You for Shopping at SYOS ");
+        System.out.println("=================================\n");
+    }
+
 }
