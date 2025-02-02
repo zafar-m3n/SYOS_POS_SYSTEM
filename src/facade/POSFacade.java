@@ -126,6 +126,7 @@ public class POSFacade {
                 scanner.nextLine();
 
                 billBuilder.setCashTendered(cashTendered);
+                billBuilder.setChangeAmount(cashTendered-totalBillAmount);
                 paymentStrategy = new CashPaymentStrategy(paymentAdapter);
                 break;
             } else {

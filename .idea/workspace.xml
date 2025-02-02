@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35b75ada-ff2e-4951-a799-b86a11e1499d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mockito_junit_jupiter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/builder/BillBuilderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/command/CheckoutCommandTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/observer/StockObserverTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/strategy/CashPaymentStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/template/ReportTemplateTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SYOS_POS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SYOS_POS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/BillBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/BillBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/facade/POSFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/POSFacade.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,29 +33,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.BillBuilderTest.executor": "Run",
-    "JUnit.CashPaymentStrategyTest.executor": "Run",
-    "JUnit.CheckoutCommandTest.executor": "Run",
-    "JUnit.StockObserverTest.executor": "Run",
-    "JUnit.test in SYOS_POS.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ZAFARULLAH/Documents/APIIT-SriLanka/Subjects/Year-3/Semester-1/CCCP-1/Assignment/CB011106_Assignment/SYOS_POS/lib/mysql-connector-j-9.2.0.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.BillBuilderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CashPaymentStrategyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CheckoutCommandTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StockObserverTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.test in SYOS_POS.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.test.template in SYOS_POS.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ZAFARULLAH/Documents/APIIT-SriLanka/Subjects/Year-3/Semester-1/CCCP-1/Assignment/CB011106_Assignment/SYOS_POS/lib/mysql-connector-j-9.2.0.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.test in SYOS_POS">
+}</component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="SYOS_POS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CashPaymentStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SYOS_POS" />
       <extension name="coverage">
@@ -71,21 +74,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.strategy" />
       <option name="MAIN_CLASS_NAME" value="test.strategy.CashPaymentStrategyTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CheckoutCommandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SYOS_POS" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.command.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.command" />
-      <option name="MAIN_CLASS_NAME" value="test.command.CheckoutCommandTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -136,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.test in SYOS_POS" />
         <item itemvalue="JUnit.test.template in SYOS_POS" />
         <item itemvalue="JUnit.StockObserverTest" />
         <item itemvalue="JUnit.CashPaymentStrategyTest" />
-        <item itemvalue="JUnit.CheckoutCommandTest" />
       </list>
     </recent_temporary>
   </component>
@@ -165,5 +153,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SYOS_POS$test_in_SYOS_POS.ic" NAME="test in SYOS_POS Coverage Results" MODIFIED="1738431666548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>test.*</FILTER>
+    </SUITE>
   </component>
 </project>

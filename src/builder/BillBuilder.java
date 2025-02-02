@@ -38,6 +38,11 @@ public class BillBuilder {
         return this;
     }
 
+    public BillBuilder setChangeAmount (double changeAmount) {
+        this.changeAmount = changeAmount;
+        return this;
+    }
+
     public BillBuilder setTransactionType(String transactionType) {
         this.transactionType = transactionType;
         return this;
